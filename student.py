@@ -47,6 +47,17 @@ class GoPiggy(pigo.Pigo):
         print("Piggy dance")
         ##### WRITE YOUR FIRST PROJECT HERE
         self.encR(18)
+        for x in range(100, 200, 25):
+            print ('speed is set to:' + str(x))
+            set_speed(x)
+            servo(20)
+            self.encB(5)
+            self.encR(2)
+            self.encl(2)
+            self.encF(5)
+            servo(120)
+            time.sleep(.3)
+
 
     # AUTONOMOUS DRIVING
     def nav(self):
