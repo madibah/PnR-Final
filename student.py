@@ -61,7 +61,7 @@ class GoPiggy(pigo.Pigo):
                 self.encB(12)
                 self.encF(5)
                 servo(120)
-                time.sleep(.3)
+                time.sleep(.4)
 
 
     # AUTONOMOUS DRIVING
