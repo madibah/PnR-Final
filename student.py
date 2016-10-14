@@ -80,7 +80,7 @@ class GoPiggy(pigo.Pigo):
             servo(120)
             time.sleep(.1)
             x += 25
-            stop()
+            
 
 
     # AUTONOMOUS DRIVING
