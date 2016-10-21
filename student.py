@@ -58,7 +58,6 @@ class GoPiggy(pigo.Pigo):
             self.encL(10)
             self.encB(20)
             self.encF(10)
-            self.encR(18)
             servo(130)
             self.encL(20)
             self.encF(20)
@@ -69,7 +68,6 @@ class GoPiggy(pigo.Pigo):
             self.encR(10)
             self.encB(8)
             self.encF(8)
-            self.encL(10)
             servo(80)
             self.encF(8)
             self.encL(10)
@@ -80,13 +78,22 @@ class GoPiggy(pigo.Pigo):
             servo(120)
             time.sleep(.1)
             x += 25
-            
+
 
 
     # AUTONOMOUS DRIVING
     def nav(self):
         print("Piggy nav")
         ##### WRITE YOUR FINAL PROJECT HERE
+        #TODO: If while loop fails, check for other paths
+        #loop: check that it's clear
+        while self.isClear():
+            #let's go forward just a little bit
+            self.encF(10)
+         while self.isClear():
+            #let's go right just a little bit
+            self.encR(10)
+
 
 
 ####################################################
