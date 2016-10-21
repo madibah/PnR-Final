@@ -90,9 +90,12 @@ class GoPiggy(pigo.Pigo):
         while self.isClear():
             #let's go forward just a little bit
             self.encF(20)
-
-        else:
-            self.encR(20)
+        answer = self.choosePath()
+        if answer = = "left":
+            self.encl(5)
+        elif answer == "right":
+                self.encR(5)
+            
 
 
 
