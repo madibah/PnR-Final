@@ -90,8 +90,8 @@ class GoPiggy(pigo.Pigo):
         while self.isClear():
             #let's go forward just a little bit
             self.encF(10)
-         while self.isClear():
-            #let's go right just a little bit
+
+        else:
             self.encR(20)
 
 
