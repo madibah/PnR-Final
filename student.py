@@ -90,10 +90,10 @@ class GoPiggy(pigo.Pigo):
         while True:
             while self.isClear():
                 #let's go forward just a little bit
-                self.encF(10)
+                self.encF(5)
             answer = self.choosePath()
             if answer == "left":
-                self.encl(3)
+                self.encL(3)
             elif answer == "right":
                 self.encR(3)
 
