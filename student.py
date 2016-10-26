@@ -33,6 +33,7 @@ class GoPiggy(pigo.Pigo):
                 "2": ("Rotate", self.rotate),
                 "3": ("Dance", self.dance),
                 "4": ("Calibrate servo", self.calibrate),
+                "5": ("Cruise", self.cruise),
                 "q": ("Quit", quit)
                 }
         # loop and print the menu...
@@ -41,6 +42,18 @@ class GoPiggy(pigo.Pigo):
         #
         ans = input("Your selection: ")
         menu.get(ans, [None, error])[1]()
+
+    def cruise(self):
+        print("Is it clear in front of me?")
+        clear = self.isClear()
+        print(clear)
+        if clear:
+            print("Let's roll...")
+            fwd()
+        while True:
+            if not self.isClear():
+                print("OMG STOP!!!!")
+                self.stop()
 
     # A SIMPLE DANCE ALGORITHM
     def dance(self):
