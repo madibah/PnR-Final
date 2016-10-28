@@ -80,9 +80,9 @@ class GoPiggy(pigo.Pigo):
                 self.stop()
                 answer = self.choosePath()
                 if answer == "left":
-                    self.encL(5)
+                    self.encL(4)
                 elif answer == "right":
-                    self.encR(5)
+                    self.encR(4)
 
 
     # A SIMPLE DANCE ALGORITHM
