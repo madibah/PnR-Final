@@ -110,6 +110,8 @@ class GoPiggy(pigo.Pigo):
             elif answer == "right":
                 self.encR(3)
 
+            
+
 
 
 
