@@ -13,7 +13,7 @@ class GoPiggy(pigo.Pigo):
     # CUSTOM INSTANCE VARIABLES GO HERE. You get the empty self.scan array from Pigo
     # You may want to add a variable to store your default speed
     MIDPOINT = 97
-    STOP_DIST = 20
+    STOP_DIST = 30
 
     # CONSTRUCTOR
     def __init__(self):
@@ -43,17 +43,47 @@ class GoPiggy(pigo.Pigo):
         ans = input("Your selection: ")
         menu.get(ans, [None, error])[1]()
 
+        def frontClear (self) -> bool:
+            for x in range((self.MIDPOINT - 1), (self.MIDPOINT + 1), +1):
+                servo(x)
+                time.sleep(.1)
+                scan1 = us_dist(15)
+                time.sleep(.1)
+                # double check the distance
+                scan2 = us_dist(15)
+                time.sleep(.1)
+                # if I found a different distance the second time....
+                if abs(scan1 - scan2) > 2:
+                    scan3 = us_dist(15)
+                    time.sleep(.1)
+                    # take another scan and average the three together
+                    scan1 = (scan1 + scan2 + scan3) / 3
+                self.scan[x] = scan1
+                print("Degree: " + str(x) + ", distance: " + str(scan1))
+                if scan1 < self.STOP_DIST:
+                    print("Doesn't look clear to me")
+                    return False
+            return True
+
     def cruise(self):
+        set left speed (115)
+        set right speed (115)
         print("Is it clear in front of me?")
         clear = self.isClear()
         print(clear)
-        if clear:
+        while True:
+            if clear:
             print("Let's roll...")
             fwd()
-        while True:
             if not self.isClear():
                 print("OMG STOP!!!!")
                 self.stop()
+                answer = self.choosePath()
+                if answer == "left":
+                    self.encl(20)
+                elif answer == "right":
+                    self.encR(20)
+
 
     # A SIMPLE DANCE ALGORITHM
     def dance(self):
@@ -110,7 +140,7 @@ class GoPiggy(pigo.Pigo):
             elif answer == "right":
                 self.encR(3)
 
-            
+
 
 
 
