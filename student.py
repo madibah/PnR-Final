@@ -73,8 +73,8 @@ class GoPiggy(pigo.Pigo):
         print(clear)
         while True:
             if clear:
-            print("Let's roll...")
-            fwd()
+                print("Let's roll...")
+                fwd()
             if not self.isClear():
                 print("OMG STOP!!!!")
                 self.stop()
