@@ -43,31 +43,31 @@ class GoPiggy(pigo.Pigo):
         ans = input("Your selection: ")
         menu.get(ans, [None, error])[1]()
 
-        def frontClear (self) -> bool:
-            for x in range((self.MIDPOINT - 1), (self.MIDPOINT + 1), +1):
-                servo(x)
+    def isClear(self) -> bool:
+        for x in range((self.MIDPOINT - 15), (self.MIDPOINT + 15), 5):
+            servo(x)
+            time.sleep(.1)
+            scan1 = us_dist(15)
+            time.sleep(.1)
+            # double check the distance
+            scan2 = us_dist(15)
+            time.sleep(.1)
+            # if I found a different distance the second time....
+            if abs(scan1 - scan2) > 2:
+                scan3 = us_dist(15)
                 time.sleep(.1)
-                scan1 = us_dist(15)
-                time.sleep(.1)
-                # double check the distance
-                scan2 = us_dist(15)
-                time.sleep(.1)
-                # if I found a different distance the second time....
-                if abs(scan1 - scan2) > 2:
-                    scan3 = us_dist(15)
-                    time.sleep(.1)
-                    # take another scan and average the three together
-                    scan1 = (scan1 + scan2 + scan3) / 3
-                self.scan[x] = scan1
-                print("Degree: " + str(x) + ", distance: " + str(scan1))
-                if scan1 < self.STOP_DIST:
-                    print("Doesn't look clear to me")
-                    return False
-            return True
+                # take another scan and average the three together
+                scan1 = (scan1 + scan2 + scan3) / 3
+            self.scan[x] = scan1
+            print("Degree: " + str(x) + ", distance: " + str(scan1))
+            if scan1 < self.STOP_DIST:
+                print("Doesn't look clear to me")
+                return False
+        return True
 
     def cruise(self):
-        set left speed (115)
-        set right speed (115)
+        set_left_speed (115)
+        set_right_speed (115)
         print("Is it clear in front of me?")
         clear = self.isClear()
         print(clear)
@@ -80,7 +80,7 @@ class GoPiggy(pigo.Pigo):
                 self.stop()
                 answer = self.choosePath()
                 if answer == "left":
-                    self.encl(20)
+                    self.encL(20)
                 elif answer == "right":
                     self.encR(20)
 
