@@ -122,7 +122,72 @@ class GoPiggy(pigo.Pigo):
             time.sleep(.4)
             x += 25
 
+            ###print(" Choice " + str(count) + " is at " + str(x) + " degrees. ")
 
+            def dataBase(self):
+                menu = {"1": (" Direction Left Four", self.leftTurn4),
+                        "2": (" Direction Left Two", self.leftTurn2),
+                        "3": (" Direction Forward Four", self.forward4),
+                        "4": (" Direction Forward Eight", self.forward8),
+                        "5": (" Direction Right Two", self.rightTurn2),
+                        "6": (" Direction Right Four", self.rightTurn4),
+                        "n": (" Return to testDrive", self.testDrive),
+                        "q": (" Return to selection menu", self.handler)
+                        }
+                # loop and print the menu...
+                for key in sorted(menu.keys()):
+                    print(key + ":" + menu[key][0])
+                #
+                ans = input("Your selection: ")
+                menu.get(ans, [None, error])[1]()
+
+                # ans = input("Your selection: ")
+                # option.get(ans, [None, error])[1]()
+
+            def rightTurn4(self):
+                self.encR(4)
+
+            def rightTurn2(self):
+                self.encR(2)
+
+            def leftTurn4(self):
+                self.encL(4)
+
+            def leftTurn2(self):
+                self.encL(2)
+
+            def forward4(self):
+                self.encF(4)
+
+            def forward8(self):
+                self.encF(8)
+                # TODO figure out what option is closest to the midpoint
+
+                ##########################################################
+                ####### Calibration methods and turn speed help
+
+            def setSpeed(self, x):
+                self.speed = x
+                set_left_speed(self.speed * .3)
+                set_right_speed(speed)
+
+            def getSpeed(self):
+                return self.speed
+
+                ########################################################
+                ########## Consistent turns
+
+            def turnR(self, x):
+                previous = self.getSpeed()
+                self.setSpeed(self.TURNSPEED)
+                self.encR(x)
+                self.setSpeed(previous)
+
+            def turnL(self, x):
+                previous = self.getSpeed()
+                self.setSpeed(self.TURNSPEED)
+                self.encL(x)
+                self.setSpeed(previous)
 
     # AUTONOMOUS DRIVING
     def nav(self):
