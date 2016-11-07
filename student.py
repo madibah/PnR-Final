@@ -12,8 +12,13 @@ improve the parent class and it won't overwrite your work.
 class GoPiggy(pigo.Pigo):
     # CUSTOM INSTANCE VARIABLES GO HERE. You get the empty self.scan array from Pigo
     # You may want to add a variable to store your default speed
-    MIDPOINT = 97
-    STOP_DIST = 30
+    class Pigo(object):
+        MIDPOINT = 97
+        STOP_DIST = 20
+        RIGHT_SPEED = 200
+        speed = 100
+        LEFT_SPEED = 200
+        scan = [None] * 180
 
     # CONSTRUCTOR
     def __init__(self):
@@ -21,6 +26,7 @@ class GoPiggy(pigo.Pigo):
         # this method makes sure Piggy is looking forward
         #self.calibrate()
         # let's use an event-driven model, make a handler of sorts to listen for "events"
+        self.setSpeed(self.LEFT_SPEED, self.RIGHT_SPEED)
         while True:
             self.stop()
             self.handler()
@@ -84,6 +90,12 @@ class GoPiggy(pigo.Pigo):
                 elif answer == "right":
                     self.encR(4)
 
+    def setSpeed(self, left, right):
+        set_left_speed(left)
+        set_right_speed(right)
+        self.LEFT_SPEED = left
+        self.RIGHT_SPEED = right
+        print('Left speed set to: ' + str(left) + ' // Right set to: ' + str(right))
 
     # A SIMPLE DANCE ALGORITHM
     def dance(self):
