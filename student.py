@@ -17,7 +17,7 @@ class GoPiggy(pigo.Pigo):
         STOP_DIST = 20
         RIGHT_SPEED = 200
         speed = 100
-        LEFT_SPEED = 200
+        LEFT_SPEED = 150
         scan = [None] * 180
 
     # CONSTRUCTOR
@@ -133,6 +133,8 @@ class GoPiggy(pigo.Pigo):
             servo(120)
             time.sleep(.4)
             x += 25
+
+
 
             ###print(" Choice " + str(count) + " is at " + str(x) + " degrees. ")
 
