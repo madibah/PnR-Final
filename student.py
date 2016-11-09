@@ -7,7 +7,8 @@ from gopigo import *
 This class INHERITS your teacher's Pigo class. That means Mr. A can continue to
 improve the parent class and it won't overwrite your work.
 '''
-
+LEFT_SPEED = 100
+RIGHT_SPEED = 200
 
 class GoPiggy(pigo.Pigo):
     # CUSTOM INSTANCE VARIABLES GO HERE. You get the empty self.scan array from Pigo
@@ -15,9 +16,7 @@ class GoPiggy(pigo.Pigo):
     class Pigo(object):
         MIDPOINT = 97
         STOP_DIST = 20
-        RIGHT_SPEED = 200
         speed = 100
-        LEFT_SPEED = 150
         scan = [None] * 180
 
     # CONSTRUCTOR
