@@ -220,7 +220,7 @@ class Pigo(object):
         for x in range(3):
             stop()
         servo(self.MIDPOINT)
-        time.sleep(0.05)
+        time.sleep(0.04)
         disable_servo()
 
     def calibrate(self):
