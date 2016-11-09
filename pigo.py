@@ -253,9 +253,9 @@ class Pigo(object):
                 self.encF(9)
                 response = input("Reduce left, reduce right or done? (l/r/d): ")
                 if response == 'l':
-                    self.LEFT_SPEED /= .3
+                    self.LEFT_SPEED *= .3
                 elif response == 'r':
-                    self.RIGHT_SPEED /= .3
+                    self.RIGHT_SPEED *= .3
                 else:
                     break
 
