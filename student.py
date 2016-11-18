@@ -143,7 +143,7 @@ class GoPiggy(pigo.Pigo):
     def setSpeed(self, left, right):
         print("left speed: " + str(left))
         print("right speed: " + str(right))
-        set_left_speed(int((left))
+        set_left_speed(int(left))
         set_right_speed(int(right))
         time.sleep(.05)
 
