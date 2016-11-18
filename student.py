@@ -19,6 +19,11 @@ class GoPiggy(pigo.Pigo):
         speed = 100
         scan = [None] * 180
 
+        turn_track = 0.00
+        TIME_PER_EGREE = 0.011
+        TURN_MODIFIER = .5
+
+
     # CONSTRUCTOR
     def __init__(self):
         print("Piggy has be instantiated!")
@@ -133,9 +138,36 @@ class GoPiggy(pigo.Pigo):
             time.sleep(.4)
             x += 25
 
+    #### New turn methods because encR and encl just don't cut it
+    ### take number of degrees and turns right accordingly
+    def turnR(self, deg):
+         #blah blah blah
+        self.turn_track += deg
+        print("let's turn"+ str(self.turn_trak) + " degrees away")
+        right_rot()
+        time.sleep(self.TIME_PER_DEGREE)
+        self.stop()
+
+    def turnL(self, deg)
+        # blah blah blah
+        self.turn_track += deg
+        print("let's turn" + str(self.turn_trak) + " degrees away")
+        self.setSpeed(self.:LEFT_SPEED * self.TURN_MODIFIER,
+                            self.:RIGHT_SPEED * self.TURN_MODIFIER)
+        #do turn stuff
+        left rot()
+        time.sleep(deg * self.TIME_PER_DEGREE)
+        self.stop()
+        self.setspeed(self.LEFT_SPEED, self.RIGHT_SPEED)
 
 
-            ###print(" Choice " + str(count) + " is at " + str(x) + " degrees. ")
+
+    def setSpeed(self, left, right):
+        print("left speed: " + str(left))
+        print("right speed: " + str(right))
+        set_left_speed(int((left))
+        set_right_speed(int(right))
+        time.sleep(.05)
 
             def dataBase(self):
                 menu = {"1": (" Direction Left Four", self.leftTurn4),
