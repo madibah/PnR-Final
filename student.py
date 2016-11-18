@@ -131,10 +131,9 @@ class GoPiggy(pigo.Pigo):
         # blah blah blah
         self.turn_track += deg
         print("let's turn" + str(self.turn_trak) + " degrees away")
-        self.setSpeed(self.:LEFT_SPEED * self.TURN_MODIFIER,
-                            self.:RIGHT_SPEED * self.TURN_MODIFIER)
+        self.setSpeed(self.LEFT_SPEED * self.TURN_MODIFIER, self.RIGHT_SPEED * self.TURN_MODIFIER)
         #do turn stuff
-        left rot()
+        left_rot()
         time.sleep(deg * self.TIME_PER_DEGREE)
         self.stop()
         self.setspeed(self.LEFT_SPEED, self.RIGHT_SPEED)
