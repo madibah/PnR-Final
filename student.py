@@ -53,7 +53,7 @@ class GoPiggy(pigo.Pigo):
         ans = input("Your selection: ")
         menu.get(ans, [None, error])[1]()
 
-   
+
     def cruise(self):
         set_left_speed (115)
         set_right_speed (115)
@@ -127,7 +127,7 @@ class GoPiggy(pigo.Pigo):
         time.sleep(self.TIME_PER_DEGREE)
         self.stop()
 
-    def turnL(self, deg)
+    def turnL(self, deg):
         # blah blah blah
         self.turn_track += deg
         print("let's turn" + str(self.turn_trak) + " degrees away")
