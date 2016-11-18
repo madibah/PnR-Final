@@ -43,8 +43,8 @@ class GoPiggy(pigo.Pigo):
                 "2": ("Rotate", self.rotate),
                 "3": ("Dance", self.dance),
                 "4": ("Calibrate servo", self.calibrate),
-                "5": ("Cruise", self.cruise),
-                "q": ("Quit", quit)
+                "5": ("Cruise", self.cruise)
+
                 }
         # loop and print the menu...
         for key in sorted(menu.keys()):
@@ -146,7 +146,7 @@ class GoPiggy(pigo.Pigo):
         set_left_speed(int(left))
         set_right_speed(int(right))
         time.sleep(.05)
-
+'''
     def dataBase(self):
          menu = {"1": (" Direction Left Four", self.leftTurn4),
                 "2": (" Direction Left Two", self.leftTurn2),
@@ -185,7 +185,7 @@ class GoPiggy(pigo.Pigo):
     def forward8(self):
         self.encF(8)
         # TODO figure out what option is closest to the midpoint
-
+'''
         ##########################################################
         ####### Calibration methods and turn speed help
 
