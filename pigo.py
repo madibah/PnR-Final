@@ -200,7 +200,7 @@ class Pigo(object):
         return True
 
     # DECIDE WHICH WAY TO TURN
-    def choosePath(self) -> str:
+    def choosePath(self):
         print('Considering options...')
         if self.isClear():
             return "fwd"
