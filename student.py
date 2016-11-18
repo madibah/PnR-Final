@@ -157,15 +157,15 @@ class GoPiggy(pigo.Pigo):
                 "n": (" Return to testDrive", self.testDrive),
                 "q": (" Return to selection menu", self.handler)
                 }
-                # loop and print the menu...
-                for key in sorted(menu.keys()):
-                    print(key + ":" + menu[key][0])
-                #
-                ans = input("Your selection: ")
-                menu.get(ans, [None, error])[1]()
+    # loop and print the menu...
+    for key in sorted(menu.keys()):
+        print(key + ":" + menu[key][0])
+    #
+    ans = input("Your selection: ")
+    menu.get(ans, [None, error])[1]()
 
-                # ans = input("Your selection: ")
-                # option.get(ans, [None, error])[1]()
+    # ans = input("Your selection: ")
+    # option.get(ans, [None, error])[1]()
 
             def rightTurn4(self):
                 self.encR(4)
