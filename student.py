@@ -144,10 +144,11 @@ class GoPiggy(pigo.Pigo):
 
 
     def setSpeed(self, left, right):
-        print("left speed: " + str(left))
-        print("right speed: " + str(right))
+        print("left speed: " + str(left)) + '// "right speed: " '+ str(right))
         set_left_speed(int(left))
         set_right_speed(int(right))
+        self.LEFT_SPEED = left
+        self.RIGHT_SPEED = right
         time.sleep(.05)
     '''
     def dataBase(self):
@@ -189,16 +190,7 @@ class GoPiggy(pigo.Pigo):
         self.encF(8)
         # TODO figure out what option is closest to the midpoint
     '''
-        ##########################################################
-        ####### Calibration methods and turn speed help
 
-    def setSpeed(self, x):
-        self.speed = x
-        set_left_speed(self.speed * .3)
-        set_right_speed(speed)
-
-    def getSpeed(self):
-        return self.speed
 
     ########################################################
     ########## Consistent turns
