@@ -19,7 +19,7 @@ class GoPiggy(pigo.Pigo):
         speed = 100
         scan = [None] * 180
         LEFT_SPEED = 200
-        RIGHT_SPEED =200
+        RIGHT_SPEED = 200
 
 
         turn_track = 0.00
