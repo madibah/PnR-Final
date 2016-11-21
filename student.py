@@ -53,7 +53,7 @@ class GoPiggy(pigo.Pigo):
         ans = input("Your selection: ")
         menu.get(ans, [None, error])[1]()
 
-
+######## Big self driving method
     def cruise(self):
         set_left_speed (115)
         set_right_speed (115)
@@ -146,7 +146,7 @@ class GoPiggy(pigo.Pigo):
         set_left_speed(int(left))
         set_right_speed(int(right))
         time.sleep(.05)
-'''
+    '''
     def dataBase(self):
          menu = {"1": (" Direction Left Four", self.leftTurn4),
                 "2": (" Direction Left Two", self.leftTurn2),
@@ -185,7 +185,7 @@ class GoPiggy(pigo.Pigo):
     def forward8(self):
         self.encF(8)
         # TODO figure out what option is closest to the midpoint
-'''
+    '''
         ##########################################################
         ####### Calibration methods and turn speed help
 
@@ -197,8 +197,8 @@ class GoPiggy(pigo.Pigo):
     def getSpeed(self):
         return self.speed
 
-        ########################################################
-        ########## Consistent turns
+    ########################################################
+    ########## Consistent turns
 
     def turnR(self, x):
         previous = self.getSpeed()
