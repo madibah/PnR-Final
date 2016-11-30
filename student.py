@@ -7,7 +7,7 @@ from gopigo import *
 This class INHERITS your teacher's Pigo class. That means Mr. A can continue to
 improve the parent class and it won't overwrite your work.
 '''
-LEFT_SPEED = 100
+LEFT_SPEED = 50
 RIGHT_SPEED = 100
 
 class GoPiggy(pigo.Pigo):
