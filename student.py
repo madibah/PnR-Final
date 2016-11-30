@@ -21,7 +21,7 @@ class GoPiggy(pigo.Pigo):
         LEFT_SPEED = 200
         RIGHT_SPEED = 200
 
-
+    ### turn right or left 90
         turn_track = 0.00
         TIME_PER_EGREE = 0.011
         TURN_MODIFIER = .5
@@ -76,12 +76,6 @@ class GoPiggy(pigo.Pigo):
                 elif answer == "right":
                     self.encR(4)
 
-    def setSpeed(self, left, right):
-        set_left_speed(left)
-        set_right_speed(right)
-        self.LEFT_SPEED = left
-        self.RIGHT_SPEED = right
-        print('Left speed set to: ' + str(left) + ' // Right set to: ' + str(right))
 
     # A SIMPLE DANCE ALGORITHM
     def dance(self):
@@ -142,7 +136,7 @@ class GoPiggy(pigo.Pigo):
         self.setspeed(self.LEFT_SPEED, self.RIGHT_SPEED)
 
 
-
+    ########    speed method
     def setSpeed(self, left, right):
         print("left speed: " + str(left) + '// "right speed: " '+ str(right))
         set_left_speed(int(left))
@@ -192,21 +186,6 @@ class GoPiggy(pigo.Pigo):
     '''
 
 
-    ########################################################
-    ########## Consistent turns
-
-    def turnR(self, x):
-        previous = self.getSpeed()
-        self.setSpeed(self.TURNSPEED)
-        self.encR(x)
-        self.setSpeed(previous)
-
-    def turnL(self, x):
-        previous = self.getSpeed()
-        self.setSpeed(self.TURNSPEED)
-        self.encL(x)
-        self.setSpeed(previous)
-
     # AUTONOMOUS DRIVING
     def nav(self):
         print("Piggy nav")
@@ -215,7 +194,7 @@ class GoPiggy(pigo.Pigo):
         #loop: check that it's clear
         while True:
             while self.isClear():
-                #let's go forward just a little bit
+        #TODO: let's go forward just a little bit
                 self.encF(5)
             answer = self.choosePath()
             if answer == "left":
