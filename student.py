@@ -11,17 +11,16 @@ improve the parent class and it won't overwrite your work.
 class GoPiggy(pigo.Pigo):
     # CUSTOM INSTANCE VARIABLES GO HERE. You get the empty self.scan array from Pigo
     # You may want to add a variable to store your default speed
-    class Pigo(object):
-        MIDPOINT = 97
-        STOP_DIST = 20
-        scan = [None] * 180
-        ###### which motor to use to straighten the wheels
-        LEFT_SPEED = 10
-        RIGHT_SPEED = 10
-        ### turn right or left 90
-        turn_track = 0
-        TIME_PER_DEGREE = 0.011
-        TURN_MODIFIER = .5
+    MIDPOINT = 97
+    STOP_DIST = 20
+    ###### which motor to use to straighten the wheels
+    LEFT_SPEED = 10
+    RIGHT_SPEED = 10
+    ### turn right or left 90
+    TIME_PER_DEGREE = 0.011
+    TURN_MODIFIER = .5
+    turn_track = 0
+    scan = [None] * 180
 
 
     # CONSTRUCTOR
