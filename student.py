@@ -70,11 +70,77 @@ class GoPiggy(pigo.Pigo):
             if not self.isClear():
                 print("OMG STOP!!!!")
                 self.stop()
-                answer = self.choosePath()
-                if answer == "left":
-                    self.encL(4)
-                elif answer == "right":
-                    self.encR(4)
+                turn_target = self.kenny()
+                if turn_target < 0:
+                    self.turn(abs(turn_target))
+                else:
+                    self.turnL(turn_target)
+
+########### watch out, please do not hit the wall, backup!!!!!###########
+
+    def watchout(self):
+         if us_dist(15) < 10:
+            print("Too close. Backing up for half a second")
+            bwd()
+            time.sleep(.5)
+            self.stop()
+
+    #replacement turn method. Find the best method to turn
+    def Kenny(self):
+        #use the built-in wide scan
+        self.wideScan()
+        #count will keep track of the contigeous positive readings
+        count = 0
+        #List of all the open paths we detect
+        option = [0]
+        SAFETY_BUFFER = 30
+        #what increment do you have your widescan set to?
+        INC = 2
+
+
+        ##################################################################################################################################################################################################################
+        #####################Build THE OPTIONS
+        ##################################################################################################################################################################################################################
+        for x in range(self.MIDPOINT - 60, self.MIDPOINT + 60):
+            if self.scan[x]:
+                #add 30 if you want, this is an extra safety buffer
+                if self.scan[x]> (self.STOP_DIST + SAFETY_BUFFER):
+                    count += 1
+                #if this reading isn't safe...
+                else:
+                    #aww nuts, I have to reset the count, this path won't work
+                    count = 0
+                if count > (20/INC):
+                    #Success! I've found enough positive readings in a row to count
+                    print ('Found an option' + str(x - 20) + " to " + str(x))
+                    count = 0
+                    option.append(x - 10)
+
+                    ####################################
+            ############## PICK FROM THE OPTIONS - experimental
+
+            # The biggest angle away from our midpoint we could possibly see is 90
+            bestoption = 90
+            # the turn it would take to get us aimed back toward the exit - experimental
+            ideal = -self.turn_track
+            print("\nTHINKING. Ideal turn: " + str(ideal) + " degrees\n")
+            # x will iterate through all the angles of our path options
+            for x in option:
+                # skip our filler option
+                if x != 0:
+                    # the change to the midpoint needed to aim at this path
+                    turn = self.MIDPOINT - x
+                    # state our logic so debugging is easier
+                    print("\nPATH @  " + str(x) + " degrees means a turn of " + str(turn))
+                    # if this option is closer to our ideal than our current best option...
+                    if abs(ideal - bestoption) > abs(ideal - turn):
+                        # store this turn as the best option
+                        bestoption = turn
+            if bestoption > 0:
+                input("\nABOUT TO TURN RIGHT BY: " + str(bestoption) + " degrees")
+            else:
+                input("\nABOUT TO TURN LEFT BY: " + str(abs(bestoption)) + " degrees")
+            return bestoption
 
 
     # A SIMPLE DANCE ALGORITHM
