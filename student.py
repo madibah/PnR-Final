@@ -18,7 +18,7 @@ class GoPiggy(pigo.Pigo):
     RIGHT_SPEED = 90
     ### turn right or left 90
     TIME_PER_DEGREE = 0.011
-    TURN_MODIFIER = .5
+    TURN_MODIFIER = 1
     turn_track = 0
     scan = [None] * 180
 
@@ -93,7 +93,7 @@ class GoPiggy(pigo.Pigo):
 
     ########### watch out, please do not hit the wall, backup!!!!!###########
     def watchout(self):
-         if us_dist(15) < 10:
+         if us_dist(15) < 30:
             print("Too close. Backing up for half a second")
             bwd()
             time.sleep(.5)
@@ -206,7 +206,7 @@ class GoPiggy(pigo.Pigo):
         right_rot()
         time.sleep(deg * self.TIME_PER_DEGREE)
         self.stop()
-        self.setspeed(self.LEFT_SPEED, self.RIGHT_SPEED)
+        self.setSpeed(self.LEFT_SPEED, self.RIGHT_SPEED)
 
     def turnL(self, deg):
         # blah blah blah
@@ -217,7 +217,7 @@ class GoPiggy(pigo.Pigo):
         left_rot()
         time.sleep(deg * self.TIME_PER_DEGREE)
         self.stop()
-        self.setspeed(self.LEFT_SPEED, self.RIGHT_SPEED)
+        self.setSpeed(self.LEFT_SPEED, self.RIGHT_SPEED)
 
 
     ######## speed method
