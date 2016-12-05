@@ -53,7 +53,28 @@ class GoPiggy(pigo.Pigo):
         ans = input("Your selection: ")
         menu.get(ans, [None, error])[1]()
 
-######## Big self driving method
+##### Autonomus driving
+
+    def nav(self):
+        print("-----Navigation on!!-------")
+
+        while True:
+            # only if it is clear in front
+            if self.isClear():
+                self.cruise()
+            # should you backup
+            self. watchout()
+            # stuck?! choose a better path
+            turn_target = self.kenny()
+            if turn_target > 0:
+                self.turnR(turn_target)
+            else:
+                self.turnL(abs(turn_target))
+
+
+
+
+            ######## Big self driving method
     def cruise(self):
         servo(self.MIDPOINT)
         print("Is it clear in front of me?")
@@ -66,9 +87,9 @@ class GoPiggy(pigo.Pigo):
             if not self.isClear():
                 print("OMG STOP!!!!")
                 self.stop()
-                turn_target = self.Kenny()
+                turn_target = self.kenny()
                 if turn_target < 0:
-                    self.turn(abs(turn_target))
+                    self.turn_track(abs(turn_target))
                 else:
                     self.turnL(turn_target)
 
@@ -82,7 +103,7 @@ class GoPiggy(pigo.Pigo):
             self.stop()
 
     #replacement turn method. Find the best method to turn
-    def Kenny(self):
+    def kenny(self):
         #use the built-in wide scan
         self.wideScan()
         #count will keep track of the contigeous positive readings
@@ -184,7 +205,7 @@ class GoPiggy(pigo.Pigo):
     def turnR(self, deg):
          #blah blah blah
         self.turn_track += deg
-        print("let's turn"+ str(self.turn_trak) + " degrees away")
+        print("let's turn"+ str(self.turn_track) + " degrees away")
         right_rot()
         time.sleep(self.TIME_PER_DEGREE)
         self.stop()
@@ -192,7 +213,7 @@ class GoPiggy(pigo.Pigo):
     def turnL(self, deg):
         # blah blah blah
         self.turn_track += deg
-        print("let's turn" + str(self.turn_trak) + " degrees away")
+        print("let's turn" + str(self.turn_track) + " degrees away")
         self.setSpeed(self.LEFT_SPEED * self.TURN_MODIFIER, self.RIGHT_SPEED * self.TURN_MODIFIER)
         #do turn stuff
         left_rot()
@@ -201,7 +222,7 @@ class GoPiggy(pigo.Pigo):
         self.setspeed(self.LEFT_SPEED, self.RIGHT_SPEED)
 
 
-    ########    speed method
+    ######## speed method
     def setSpeed(self, left, right):
         print("left speed: " + str(left) + '// "right speed: " '+ str(right))
         set_left_speed(int(left))
@@ -250,22 +271,6 @@ class GoPiggy(pigo.Pigo):
         # TODO figure out what option is closest to the midpoint
     '''
 
-
-    # AUTONOMOUS DRIVING
-    def nav(self):
-        print("Piggy nav")
-        ##### WRITE YOUR FINAL PROJECT HERE
-        #TODO: If while loop fails, check for other paths
-        #loop: check that it's clear
-        while True:
-            while self.isClear():
-        #TODO: let's go forward just a little bit
-                self.encF(5)
-            answer = self.choosePath()
-            if answer == "left":
-                self.encL(3)
-            elif answer == "right":
-                self.encR(3)
 
 
 
