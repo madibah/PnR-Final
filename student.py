@@ -15,12 +15,12 @@ class GoPiggy(pigo.Pigo):
         MIDPOINT = 97
         STOP_DIST = 20
         scan = [None] * 180
-###### which motor to use to straighten the wheels
+        ###### which motor to use to straighten the wheels
         LEFT_SPEED = 10
         RIGHT_SPEED = 10
-### turn right or left 90
-        turn_track = 0.00
-        TIME_PER_EGREE = 0.011
+        ### turn right or left 90
+        turn_track = 0
+        TIME_PER_DEGREE = 0.011
         TURN_MODIFIER = .5
 
 
@@ -76,22 +76,13 @@ class GoPiggy(pigo.Pigo):
 
             ######## Big self driving method
     def cruise(self):
-        servo(self.MIDPOINT)
-        print("Is it clear in front of me?")
-        clear = self.isClear()
-        print(clear)
+        fwd()
         while True:
-            if clear:
-                print("Let's roll...")
-                fwd()
             if not self.isClear():
                 print("OMG STOP!!!!")
                 self.stop()
-                turn_target = self.kenny()
-                if turn_target < 0:
-                    self.turn_track(abs(turn_target))
-                else:
-                    self.turnL(turn_target)
+                break
+
 
 ########### watch out, please do not hit the wall, backup!!!!!###########
 
