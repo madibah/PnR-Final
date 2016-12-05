@@ -14,7 +14,6 @@ class GoPiggy(pigo.Pigo):
     class Pigo(object):
         MIDPOINT = 97
         STOP_DIST = 20
-        speed = 100
         scan = [None] * 180
 ###### which motor to use to straighten the wheels
         LEFT_SPEED = 10
