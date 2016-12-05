@@ -206,7 +206,7 @@ class GoPiggy(pigo.Pigo):
     def turnR(self, deg):
          #blah blah blah
         self.turn_track += deg
-        print("let's turn"+ str(self.turn_track) + " degrees away")
+        print("let's turn"+str(self.turn_track) + " degrees away")
         right_rot()
         time.sleep(self.TIME_PER_DEGREE)
         self.stop()
