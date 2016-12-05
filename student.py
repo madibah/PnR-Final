@@ -75,14 +75,24 @@ class GoPiggy(pigo.Pigo):
 
 
             ######## Big self driving method
-    def cruise(self):
-        fwd()
-        while True:
-            if not self.isClear():
-                print("OMG STOP!!!!")
-                self.stop()
-                break
 
+    def cruise(self):
+        # Extra credit: Upgrade this so it looks around while driving
+        # Use the GoPiGo API's method to aim the sensor forward
+        servo(self.MIDPOINT)
+        # give the robot time to move
+        time.sleep(.05)
+        # start driving forward
+        fwd()
+        # start an infinite loop
+        while True:
+            # break the loop if the sensor reading is closer than our stop dist
+            if us_dist(15) < self.STOP_DIST:
+                break
+            # YOU DECIDE: How many seconds do you wait in between a check?
+            time.sleep(.05)
+        # stop if the sensor loop broke
+        self.stop()
 
 ########### watch out, please do not hit the wall, backup!!!!!###########
 
