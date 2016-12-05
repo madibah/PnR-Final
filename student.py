@@ -17,8 +17,8 @@ class GoPiggy(pigo.Pigo):
         speed = 100
         scan = [None] * 180
 ###### which motor to use to straighten the wheels
-        LEFT_SPEED = 140
-        RIGHT_SPEED = 140
+        LEFT_SPEED = 10
+        RIGHT_SPEED = 10
 ### turn right or left 90
         turn_track = 0.00
         TIME_PER_EGREE = 0.011
