@@ -67,7 +67,7 @@ class GoPiggy(pigo.Pigo):
             if not self.isClear():
                 print("OMG STOP!!!!")
                 self.stop()
-                turn_target = self.kenny()
+                turn_target = self.Kenny()
                 if turn_target < 0:
                     self.turn(abs(turn_target))
                 else:
