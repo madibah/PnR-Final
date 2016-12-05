@@ -7,8 +7,6 @@ from gopigo import *
 This class INHERITS your teacher's Pigo class. That means Mr. A can continue to
 improve the parent class and it won't overwrite your work.
 '''
-LEFT_SPEED = 50
-RIGHT_SPEED = 100
 
 class GoPiggy(pigo.Pigo):
     # CUSTOM INSTANCE VARIABLES GO HERE. You get the empty self.scan array from Pigo
@@ -18,10 +16,10 @@ class GoPiggy(pigo.Pigo):
         STOP_DIST = 20
         speed = 100
         scan = [None] * 180
-        LEFT_SPEED = 100
-        RIGHT_SPEED = 200
-
-    ### turn right or left 90
+###### which motor to use to straighten the wheels
+        LEFT_SPEED = 140
+        RIGHT_SPEED = 140
+### turn right or left 90
         turn_track = 0.00
         TIME_PER_EGREE = 0.011
         TURN_MODIFIER = .5
@@ -58,8 +56,7 @@ class GoPiggy(pigo.Pigo):
 
 ######## Big self driving method
     def cruise(self):
-        set_left_speed (115)
-        set_right_speed (115)
+        servo(self.MIDPOINT)
         print("Is it clear in front of me?")
         clear = self.isClear()
         print(clear)
@@ -103,18 +100,21 @@ class GoPiggy(pigo.Pigo):
         ##################################################################################################################################################################################################################
         for x in range(self.MIDPOINT - 60, self.MIDPOINT + 60):
             if self.scan[x]:
-                #add 30 if you want, this is an extra safety buffer
-                if self.scan[x]> (self.STOP_DIST + SAFETY_BUFFER):
+                # add 30 if you want, this is an extra safety buffer
+                if self.scan[x] > (self.STOP_DIST + SAFETY_BUFFER):
                     count += 1
-                #if this reading isn't safe...
                 else:
-                    #aww nuts, I have to reset the count, this path won't work
+                    # aww nuts, I have to reset the count, this path won't work
                     count = 0
-                if count > (20/INC):
-                    #Success! I've found enough positive readings in a row to count
-                    print ('Found an option' + str(x - 20) + " to " + str(x))
+                # YOU DECIDE: Is 16 degrees the right size to consider as a safe window?
+                if count > (16 / INC) - 1:
+                    # SUCCESS! I've found enough positive readings in a row
+                    print("---FOUND OPTION: from " + str(x - 16) + " to " + str(x))
+                    # set the counter up again for next time
                     count = 0
-                    option.append(x - 10)
+                    # add this option to the list
+                    option.append(x - 8)
+
 
                     ####################################
             ############## PICK FROM THE OPTIONS - experimental
