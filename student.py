@@ -12,10 +12,10 @@ class GoPiggy(pigo.Pigo):
     # CUSTOM INSTANCE VARIABLES GO HERE. You get the empty self.scan array from Pigo
     # You may want to add a variable to store your default speed
     MIDPOINT = 97
-    STOP_DIST = 20
+    STOP_DIST = 30
     ###### which motor to use to straighten the wheels
-    LEFT_SPEED = 10
-    RIGHT_SPEED = 10
+    LEFT_SPEED = 90
+    RIGHT_SPEED = 90
     ### turn right or left 90
     TIME_PER_DEGREE = 0.011
     TURN_MODIFIER = .5
@@ -52,8 +52,7 @@ class GoPiggy(pigo.Pigo):
         ans = input("Your selection: ")
         menu.get(ans, [None, error])[1]()
 
-##### Autonomus driving
-
+    ##### Autonomus driving
     def nav(self):
         print("-----Navigation on!!-------")
 
@@ -73,8 +72,7 @@ class GoPiggy(pigo.Pigo):
 
 
 
-            ######## Big self driving method
-
+    ######## Big self driving method
     def cruise(self):
         # Extra credit: Upgrade this so it looks around while driving
         # Use the GoPiGo API's method to aim the sensor forward
@@ -93,8 +91,7 @@ class GoPiggy(pigo.Pigo):
         # stop if the sensor loop broke
         self.stop()
 
-########### watch out, please do not hit the wall, backup!!!!!###########
-
+    ########### watch out, please do not hit the wall, backup!!!!!###########
     def watchout(self):
          if us_dist(15) < 10:
             print("Too close. Backing up for half a second")
@@ -136,9 +133,8 @@ class GoPiggy(pigo.Pigo):
                     option.append(x - 8)
 
 
-                    ####################################
+            ####################################
             ############## PICK FROM THE OPTIONS - experimental
-
             # The biggest angle away from our midpoint we could possibly see is 90
             bestoption = 90
             # the turn it would take to get us aimed back toward the exit - experimental
@@ -206,9 +202,11 @@ class GoPiggy(pigo.Pigo):
          #blah blah blah
         self.turn_track += deg
         print("let's turn"+str(self.turn_track) + " degrees away")
+        self.setSpeed(self.LEFT_SPEED * self.TURN_MODIFIER, self.RIGHT_SPEED * self.TURN_MODIFIER)
         right_rot()
-        time.sleep(self.TIME_PER_DEGREE)
+        time.sleep(deg * self.TIME_PER_DEGREE)
         self.stop()
+        self.setspeed(self.LEFT_SPEED, self.RIGHT_SPEED)
 
     def turnL(self, deg):
         # blah blah blah
@@ -227,8 +225,6 @@ class GoPiggy(pigo.Pigo):
         print("left speed: " + str(left) + '// "right speed: " '+str(right))
         set_left_speed(int(left))
         set_right_speed(int(right))
-        self.LEFT_SPEED = left
-        self.RIGHT_SPEED = right
         time.sleep(.05)
     '''
     def dataBase(self):
