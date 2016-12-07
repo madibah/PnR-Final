@@ -55,13 +55,12 @@ class GoPiggy(pigo.Pigo):
     ##### Autonomus driving
     def nav(self):
         print("-----Navigation on!!-------")
-
         while True:
             # only if it is clear in front
             if self.isClear():
                 self.cruise()
             # should you backup
-            self. watchout()
+            self.watchout()
             # stuck?! choose a better path
             turn_target = self.kenny()
             if turn_target > 0:
@@ -81,19 +80,6 @@ class GoPiggy(pigo.Pigo):
         time.sleep(.05)
         # start driving forward
         while True:
-         ##is it clear in front
-            if self.isClear():
-                fwd()
-        #where to go
-        turn_target = self.kenny()
-        if turn_target > 0:
-            self.turnR(turn_target)
-        else:
-            self.turnL(abs(turn_target))
-
-        # start an infinite loop
-
-        while True:
             # break the loop if the sensor reading is closer than our stop dist
             if us_dist(15) < self.STOP_DIST:
                 break
@@ -101,7 +87,6 @@ class GoPiggy(pigo.Pigo):
             time.sleep(.05)
         # stop if the sensor loop broke
         self.stop()
-
 
     ########### watch out, please do not hit the wall, backup!!!!!###########
     def watchout(self):
@@ -122,8 +107,6 @@ class GoPiggy(pigo.Pigo):
         SAFETY_BUFFER = 20
         #what increment do you have your widescan set to?
         INC = 2
-
-
         ##################################################################################################################################################################################################################
         #####################Build THE OPTIONS
         ##################################################################################################################################################################################################################
