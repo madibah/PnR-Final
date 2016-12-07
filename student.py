@@ -83,9 +83,7 @@ class GoPiggy(pigo.Pigo):
         fwd()
         while True:
             # break the loop if the sensor reading is closer than our stop dist
-            reading = us_dist(15)
-            if reading < self.STOP_DIST:
-                print("---STOPPING CRUISE: %d CM READING---") % reading
+            if us_dist(15) < self.STOP_DIST:
                 break
             # YOU DECIDE: How many seconds do you wait in between a check?
             time.sleep(.05)
