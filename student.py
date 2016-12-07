@@ -80,8 +80,19 @@ class GoPiggy(pigo.Pigo):
         # give the robot time to move
         time.sleep(.05)
         # start driving forward
-        fwd()
+        while True:
+         ##is it clear in front
+            if self.isClear():
+                fwd()
+        #where to go
+        turn_target = self.kenny()
+        if turn_target > 0:
+            self.turnR(turn_target)
+        else:
+            self.turnL(abs(turn_target))
+
         # start an infinite loop
+
         while True:
             # break the loop if the sensor reading is closer than our stop dist
             if us_dist(15) < self.STOP_DIST:
@@ -90,6 +101,7 @@ class GoPiggy(pigo.Pigo):
             time.sleep(.05)
         # stop if the sensor loop broke
         self.stop()
+
 
     ########### watch out, please do not hit the wall, backup!!!!!###########
     def watchout(self):
