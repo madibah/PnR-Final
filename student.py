@@ -107,7 +107,7 @@ class GoPiggy(pigo.Pigo):
         count = 0
         #List of all the open paths we detect
         option = [0]
-        SAFETY_BUFFER = 30
+        SAFETY_BUFFER = 20
         #what increment do you have your widescan set to?
         INC = 2
 
@@ -133,30 +133,30 @@ class GoPiggy(pigo.Pigo):
                     option.append(x - 8)
 
 
-            ####################################
-            ############## PICK FROM THE OPTIONS - experimental
-            # The biggest angle away from our midpoint we could possibly see is 90
-            bestoption = 90
-            # the turn it would take to get us aimed back toward the exit - experimental
-            ideal = -self.turn_track
-            print("\nTHINKING. Ideal turn: " + str(ideal) + " degrees\n")
-            # x will iterate through all the angles of our path options
-            for x in option:
-                # skip our filler option
-                if x != 0:
-                    # the change to the midpoint needed to aim at this path
-                    turn = self.MIDPOINT - x
-                    # state our logic so debugging is easier
-                    print("\nPATH @  " + str(x) + " degrees means a turn of " + str(turn))
-                    # if this option is closer to our ideal than our current best option...
-                    if abs(ideal - bestoption) > abs(ideal - turn):
-                        # store this turn as the best option
-                        bestoption = turn
-            if bestoption > 0:
-                input("\nABOUT TO TURN RIGHT BY: " + str(bestoption) + " degrees")
-            else:
-                input("\nABOUT TO TURN LEFT BY: " + str(abs(bestoption)) + " degrees")
-            return bestoption
+        ####################################
+        ############## PICK FROM THE OPTIONS - experimental
+        # The biggest angle away from our midpoint we could possibly see is 90
+        bestoption = 90
+        # the turn it would take to get us aimed back toward the exit - experimental
+        ideal = -self.turn_track
+        print("\nTHINKING. Ideal turn: " + str(ideal) + " degrees\n")
+        # x will iterate through all the angles of our path options
+        for x in option:
+            # skip our filler option
+            if x != 0:
+                # the change to the midpoint needed to aim at this path
+                turn = self.MIDPOINT - x
+                # state our logic so debugging is easier
+                print("\nPATH @  " + str(x) + " degrees means a turn of " + str(turn))
+                # if this option is closer to our ideal than our current best option...
+                if abs(ideal - bestoption) > abs(ideal - turn):
+                    # store this turn as the best option
+                    bestoption = turn
+        if bestoption > 0:
+            input("\nABOUT TO TURN RIGHT BY: " + str(bestoption) + " degrees")
+        else:
+            input("\nABOUT TO TURN LEFT BY: " + str(abs(bestoption)) + " degrees")
+        return bestoption
 
 
     # A SIMPLE DANCE ALGORITHM
