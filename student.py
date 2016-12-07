@@ -75,13 +75,17 @@ class GoPiggy(pigo.Pigo):
     def cruise(self):
         # Extra credit: Upgrade this so it looks around while driving
         # Use the GoPiGo API's method to aim the sensor forward
+        print("\n----CRUISING----\n")
         servo(self.MIDPOINT)
         # give the robot time to move
         time.sleep(.05)
         # start driving forward
+        fwd()
         while True:
             # break the loop if the sensor reading is closer than our stop dist
-            if us_dist(15) < self.STOP_DIST:
+            reading = us_dist(15)
+            if reading < self.STOP_DIST:
+                print("---STOPPING CRUISE: %d CM READING---") % reading
                 break
             # YOU DECIDE: How many seconds do you wait in between a check?
             time.sleep(.05)
