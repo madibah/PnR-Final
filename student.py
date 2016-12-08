@@ -54,7 +54,9 @@ class GoPiggy(pigo.Pigo):
 
     ##### Autonomus driving
     def nav(self):
-        print("-----Navigation on!!-------")
+        print("-----------! NAVIGATION ACTIVATED !------------\n")
+        print("[ Press CTRL + C to stop me, then run stop.py ]\n")
+        print("-----------! NAVIGATION ACTIVATED !------------\n")
         for x in range(3):
              while True:
             # only if it is clear in front
@@ -92,10 +94,11 @@ class GoPiggy(pigo.Pigo):
                 break
             # YOU DECIDE: How many seconds do you wait in between a check?
             time.sleep(.05)
+
         # stop if the sensor loop broke
         self.stop()
 
-    ########### watch out, please do not hit the wall, backup!!!!!###########
+    ###########watch out, please do not hit the wall, backup!!!!!###########
     def watchout(self):
          if us_dist(15) < 30:
             print("Too close. Backing up for half a second")
