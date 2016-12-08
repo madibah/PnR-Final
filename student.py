@@ -56,12 +56,12 @@ class GoPiggy(pigo.Pigo):
     def nav(self):
         print("-----Navigation on!!-------")
         for x in range (3):
-        while True:
+             while True:
             # only if it is clear in front
-            if self.isClear():
-                self.cruise()
-            if self.isClear():
-                self.cruise()
+                if self.isClear():
+                    self.cruise()
+                if self.isClear():
+                    self.cruise()
             # should you backup
             self.watchout()
             # stuck?! choose a better path
