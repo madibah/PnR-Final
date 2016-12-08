@@ -63,13 +63,13 @@ class GoPiggy(pigo.Pigo):
                 if self.isClear():
                     self.cruise()
             # should you backup
-            self.watchout()
+                self.watchout()
             # stuck?! choose a better path
-            turn_target = self.kenny()
-            if turn_target > 0:
-                self.turnR(turn_target)
-            else:
-                self.turnL(abs(turn_target))
+                turn_target = self.kenny()
+                if turn_target > 0:
+                    self.turnR(turn_target)
+                 else:
+                    self.turnL(abs(turn_target))
 
 
 
