@@ -57,6 +57,7 @@ class GoPiggy(pigo.Pigo):
         print("-----Navigation on!!-------")
         while True:
             # only if it is clear in front
+        for x in range(3)
             if self.isClear():
                 self.cruise()
             if self.isClear():
