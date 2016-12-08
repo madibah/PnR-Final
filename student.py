@@ -55,9 +55,9 @@ class GoPiggy(pigo.Pigo):
     ##### Autonomus driving
     def nav(self):
         print("-----Navigation on!!-------")
+     for x in range(3)
         while True:
             # only if it is clear in front
-        for x in range(3)
             if self.isClear():
                 self.cruise()
             if self.isClear():
