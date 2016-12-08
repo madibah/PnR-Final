@@ -68,7 +68,7 @@ class GoPiggy(pigo.Pigo):
                 turn_target = self.kenny()
                 if turn_target > 0:
                     self.turnR(turn_target)
-                 else:
+                else:
                     self.turnL(abs(turn_target))
 
 
