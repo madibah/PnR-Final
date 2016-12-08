@@ -59,6 +59,8 @@ class GoPiggy(pigo.Pigo):
             # only if it is clear in front
             if self.isClear():
                 self.cruise()
+            if self.isClear():
+                self.cruise()
             # should you backup
             self.watchout()
             # stuck?! choose a better path
