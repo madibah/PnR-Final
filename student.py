@@ -56,7 +56,7 @@ class GoPiggy(pigo.Pigo):
     def nav(self):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
-             while True:
+            while True:
             # only if it is clear in front
                 if self.isClear():
                     self.cruise()
