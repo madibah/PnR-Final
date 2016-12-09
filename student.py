@@ -55,7 +55,6 @@ class GoPiggy(pigo.Pigo):
     ##### Autonomus driving
     def nav(self):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
-        print("[ Press CTRL + C to stop me, then run stop.py ]\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         for x in range(3):
              while True:
@@ -78,7 +77,6 @@ class GoPiggy(pigo.Pigo):
 
     ######## Big self driving method
     def cruise(self):
-        # Extra credit: Upgrade this so it looks around while driving
         # Use the GoPiGo API's method to aim the sensor forward
         print("\n----CRUISING----\n")
         servo(self.MIDPOINT)
@@ -158,9 +156,9 @@ class GoPiggy(pigo.Pigo):
                     # store this turn as the best option
                     bestoption = turn
         if bestoption > 0:
-            input("\nABOUT TO TURN RIGHT BY: " + str(bestoption) + " degrees")
+            print("\nABOUT TO TURN RIGHT BY: " + str(bestoption) + " degrees")
         else:
-            input("\nABOUT TO TURN LEFT BY: " + str(abs(bestoption)) + " degrees")
+            print("\nABOUT TO TURN LEFT BY: " + str(abs(bestoption)) + " degrees")
         return bestoption
 
 
